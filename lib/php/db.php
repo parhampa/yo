@@ -100,6 +100,7 @@ class database
         } else {
             $sql = "update `$table` set $this->editparam $where";
         }
+        die($sql);
         $this->connect()->query($sql);
         $msg = new message();
         $fl = new filemg();

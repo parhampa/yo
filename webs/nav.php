@@ -15,15 +15,10 @@
         <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black w3-right-align"
            onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  بستن</a>
         <hr>
-
-        <b class="w3-margin">مدیران</b>
-        <a href="admin_user.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
+        <a href="websites.php?action=editform&user=<?php echo($_SESSION['user']); ?>"
+           class="w3-bar-item w3-button w3-padding w3-right-align"><i
                     class="fa fa-bullseye fa-fw"></i> 
-            مدیریت مدیران</a>
-        <hr>
-        <a href="websites.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
-                    class="fa fa-bullseye fa-fw"></i> 
-            وبسایتها</a>
+            تنظیمات</a>
         <hr>
         <a href="cat.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
                     class="fa fa-bullseye fa-fw"></i> 
