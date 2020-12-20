@@ -66,7 +66,7 @@ include("nav.php");
             ->selectaddval("0", "بدون دسته پدر")
             ->selectdb("cat", "name", "id", "", " where fid=0")
             ->end()
-            ->sndform("cat", 2, 1, "دسته پدر", 1);
+            ->sndform("fid", 2, 1, "دسته پدر", 1);
         $fm->label("نوع دسته بندی", "w3-text-green")
             ->select()
             ->selectid("type")

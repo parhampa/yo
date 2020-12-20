@@ -53,11 +53,15 @@ include("nav.php");
     <div class="w3-white w3-padding-large w3-margin w3-round-medium w3-right" style="width: 80%;">
         <?php
         $fm = new makeform();
+        $wuser = $_SESSION['user'];
+        $fm->set_where_edit(" `wuser`='$wuser'");
+        $fm->deletewhere(" `wuser`='$wuser'");
+        $fm->setwhere(" `wuser`='$wuser'");
+        $fm->set_str_val("wuser", $wuser);
         $fm->set_tbl_key("slider", "id", 1);
         $fm->fast_string_input("عنوان تصویر", "title", "title", 1, 1, 1);
         $fm->fileinput("تصویر", "pic", "w3-input w3-border", "w3-text-green", 1);
         $fm->fast_string_input("لینک", "link", "link", 1);
-        $fm->fast_string_input("کاربر", "wuser", "wuser", 1);
         $fm->submit();
         $fm->addform();
         $fm->show();

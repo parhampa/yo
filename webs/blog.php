@@ -53,15 +53,19 @@ include("nav.php");
     <div class="w3-white w3-padding-large w3-margin w3-round-medium w3-right" style="width: 80%;">
         <?php
         $fm = new makeform();
+        $wuser = $_SESSION['user'];
+        $fm->set_where_edit(" `wuser`='$wuser'");
+        $fm->deletewhere(" `wuser`='$wuser'");
+        $fm->setwhere(" `wuser`='$wuser'");
         $fm->set_tbl_key("blog", "id", 1);
-        $fm->fast_string_input("کاربر", "wuser", "wuser", 1, 1, 1);
+        $fm->set_str_val("wuser", $wuser);
         $fm->label("دسته پدر", "w3-text-green")
             ->select()
             ->selectname("fcat_id")
             ->selectid("fcat_id")
             ->selectclasses("w3-select w3-border")
             ->selectaddval("0", "بدون دسته")
-            ->selectdb("cat", "name", "id", "", "where `fid`=0 and `type`=0")
+            ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `fid`=0 and `type`=0")
             ->end()
             ->sndform("fcat_id", 2, 1, "دسته پدر", 1, 1);
         $fm->label("دسته بندی", "w3-text-green")

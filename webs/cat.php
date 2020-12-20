@@ -53,20 +53,24 @@ include("nav.php");
     <div class="w3-white w3-padding-large w3-margin w3-round-medium w3-right" style="width: 80%;">
         <?php
         $fm = new makeform();
+        $wuser = $_SESSION['user'];
+        $fm->set_where_edit(" `wuser`='$wuser'");
+        $fm->deletewhere(" `wuser`='$wuser'");
+        $fm->setwhere(" `wuser`='$wuser'");
         $fm->set_tbl_key("cat", "id", 1);
         $fm->fast_string_input("عنوان دسته بندی", "name", "name", 1, 1, 1);
         $fm->fast_textarea("کلمات کلیدی", "keywords", "keywords");
         $fm->fast_textarea("توضیحات", "disc", "disc");
-        $fm->set_str_val("wuser", $_SESSION['user']);
+        $fm->set_str_val("wuser", $wuser);
         $fm->label("دسته پدر", "w3-text-green")
             ->select()
             ->selectid("fid")
             ->selectname("fid")
             ->selectclasses("w3-select w3-border")
             ->selectaddval("0", "بدون دسته پدر")
-            ->selectdb("cat", "name", "id", "", " where fid=0")
+            ->selectdb("cat", "name", "id", "", " where fid=0 and `wuser`='$wuser'")
             ->end()
-            ->sndform("cat", 2, 1, "دسته پدر", 1);
+            ->sndform("fid", 2, 1, "دسته پدر", 1);
         $fm->label("نوع دسته بندی", "w3-text-green")
             ->select()
             ->selectid("type")
