@@ -24,6 +24,10 @@
                     class="fa fa-bullseye fa-fw"></i> 
             دسته بندی ها</a>
         <hr>
+        <a href="menu.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
+                    class="fa fa-bullseye fa-fw"></i> 
+            منو</a>
+        <hr>
         <a href="blog.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
                     class="fa fa-bullseye fa-fw"></i> 
             بلاگ</a>
