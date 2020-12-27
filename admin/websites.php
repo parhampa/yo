@@ -54,7 +54,16 @@ include("nav.php");
         <?php
         $fm = new makeform();
         $fm->set_tbl_key("website", "user", 0);
-        $fm->fast_string_input("نام کاربری", "user", "user", 1, 1, 1);
+        //$fm->fast_string_input("نام کاربری", "user", "user", 1, 1, 1);
+        $fm->label("نام کاربری", "w3-text-green")
+            ->input()
+            ->inpname("user")
+            ->inpid("user")
+            ->inpclasses("w3-input w3-border usersrc")
+            ->must_not_be_in("website", "user", "user")
+            ->end()
+            ->sndform("user", 0, 1, "نام کاربری", 1, 1);
+
         $fm->fast_password_input("کلمه عبور", "pass", "pass");
         $fm->fast_string_input("عنوان فروشگاه", "title", "title", 1, 1, 1);
         $fm->fileinput("لوگو", "logo", "w3-input w3-border", "w3-text-green", 0);
