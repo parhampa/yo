@@ -83,6 +83,16 @@ include("nav.php");
         $fm->fast_number_input("درصد تخفیف", "offer_percent", "offer_percent", 0);
         $fm->fast_number_input("مبلغ تخفیف", "offer_price", "offer_price", 0);
         $fm->fast_number_input("تعداد", "pcount", "pcount", 0);
+        $fm->label("محل VIP", "w3-text-green")
+            ->select()
+            ->selectname("vip_plc")
+            ->selectid("vip_plc")
+            ->selectclasses("w3-select w3-border")
+            ->selectaddval("0", "vip0")
+            ->selectaddval("1", "vip1")
+            ->selectaddval("2", "vip2")
+            ->end()
+            ->sndform("vip_plc", 2, 1, "محل VIP");
         $fm->set_str_val("pdate", date("Y-m-d"));
         $fm->set_int_val("visit", 0);
         $fm->submit();

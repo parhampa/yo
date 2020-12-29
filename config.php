@@ -15,6 +15,7 @@ $database = "yo";
 $db_user = "root";
 $db_pass = "";
 $web_url = "http://localhost/yo/";
+$c_unit="تومان";
 header_remove("X-Powered-By");
 header_remove("Server");
 ?>

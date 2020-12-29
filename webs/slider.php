@@ -59,9 +59,21 @@ include("nav.php");
         $fm->setwhere(" `wuser`='$wuser'");
         $fm->set_str_val("wuser", $wuser);
         $fm->set_tbl_key("slider", "id", 1);
+        $fm->fast_string_input("سرتیتر", "top_title", "top_title", 0);
         $fm->fast_string_input("عنوان تصویر", "title", "title", 1, 1, 1);
+        $fm->fast_textarea("متن کوچک", "txt", "txt");
         $fm->fileinput("تصویر", "pic", "w3-input w3-border", "w3-text-green", 1);
         $fm->fast_string_input("لینک", "link", "link", 1);
+        $fm->fast_number_input("مبلغ", "price", "price");
+        $fm->label("دکمه درخواست سفارش", "w3-text-green")
+            ->select()
+            ->selectname("ordbtn")
+            ->selectid("ordbtn")
+            ->selectclasses("w3-select w3-border")
+            ->selectaddval("0", "غیر فعال")
+            ->selectaddval("1", "فعال")
+            ->end()
+            ->sndform("ordbtn", 2, 1, "دکمه درخواست سفارش");
         $fm->submit();
         $fm->addform();
         $fm->show();
