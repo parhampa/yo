@@ -659,17 +659,17 @@ class makeform
                     $fild = mysqli_fetch_assoc($db->res);
                     $resscript = "<script>" . PHP_EOL;
                     for ($i = 0; $i < sizeof($this->formname); $i++) {
-                        $resscript .= "if(document.getElementsByName(". '"' . $this->formname[$i]. '"' . ")[0].tagName=='INPUT' && document.getElementsByName(". '"' . $this->formname[$i]. '"' . ")[0].type!='file'){
-                        document.getElementsByName(". '"' . $this->formname[$i]. '"' . ")[0].value=". '"' . preg_replace('/\s\s+/'," ",$fild[$this->formname[$i]]. '"') . ";
+                        $resscript .= "if(document.getElementsByName(" . '"' . $this->formname[$i] . '"' . ")[0].tagName=='INPUT' && document.getElementsByName(" . '"' . $this->formname[$i] . '"' . ")[0].type!='file'){
+                        document.getElementsByName(" . '"' . $this->formname[$i] . '"' . ")[0].value=" . '"' . preg_replace('/\s\s+/', " ", $fild[$this->formname[$i]] . '"') . ";
                     }" . PHP_EOL;
                         $resscript .= "if(document.getElementsByName('" . $this->formname[$i] . "')[0].tagName=='INPUT' && document.getElementsByName('" . $this->formname[$i] . "')[0].type=='file'){
-                        document.getElementById('imgfm" . $this->formname[$i] . "').src='" . preg_replace('/\s\s+/'," ",$fild[$this->formname[$i]]) . "';
+                        document.getElementById('imgfm" . $this->formname[$i] . "').src='" . preg_replace('/\s\s+/', " ", $fild[$this->formname[$i]]) . "';
                     }" . PHP_EOL;
                         $resscript .= "if(document.getElementsByName('" . $this->formname[$i] . "')[0].tagName=='TEXTAREA'){
-                        document.getElementsByName('" . $this->formname[$i] . "')[0].value=". '"' . preg_replace('/\s\s+/','"'."+"."'\\n'"."+".'"',$fild[$this->formname[$i]]) . '"' . ";
+                        document.getElementsByName('" . $this->formname[$i] . "')[0].value=" . '"' . preg_replace('/\s\s+/', '"' . "+" . "'\\n'" . "+" . '"', $fild[$this->formname[$i]]) . '"' . ";
                     }" . PHP_EOL;
                         $resscript .= "if(document.getElementsByName('" . $this->formname[$i] . "')[0].tagName=='SELECT'){
-                        document.getElementsByName('" . $this->formname[$i] . "')[0].value=". '"' . preg_replace('/\s\s+/'," ",$fild[$this->formname[$i]]). '"' . ";
+                        document.getElementsByName('" . $this->formname[$i] . "')[0].value=" . '"' . preg_replace('/\s\s+/', " ", $fild[$this->formname[$i]]) . '"' . ";
                     }" . PHP_EOL;
                         $fl = new filemg();
                         if (is_numeric(strpos($this->form_action, "action=addquery")) == true) {
