@@ -11,7 +11,7 @@ include("check_admin_session.php");
 ?>
 <!DOCTYPE html>
 <html>
-<title>دسته بندی ها</title>
+<title>خبرنامه</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/w3.css">
@@ -48,7 +48,7 @@ include("nav.php");
 
     <!-- Header -->
     <header class="w3-container" style="padding-top:22px;">
-        <h5><b><i class="fa fa-dashboard"></i>دسته بندی</b></h5>
+        <h5><b><i class="fa fa-dashboard"></i>خبرنامه</b></h5>
     </header>
     <div class="w3-white w3-padding-large w3-margin w3-round-medium w3-right" style="width: 80%;">
         <?php
@@ -57,31 +57,9 @@ include("nav.php");
         $fm->set_where_edit(" `wuser`='$wuser'");
         $fm->deletewhere(" `wuser`='$wuser'");
         $fm->setwhere(" `wuser`='$wuser'");
-        $fm->set_tbl_key("cat", "id", 1);
-        $fm->fast_string_input("عنوان دسته بندی", "name", "name", 1, 1, 1);
-        $fm->fast_textarea("کلمات کلیدی", "keywords", "keywords");
-        $fm->fast_textarea("توضیحات", "disc", "disc");
-        $fm->fileinput("لوگو", "pic", "w3-input w3-border", "w3-text-green", 0);
         $fm->set_str_val("wuser", $wuser);
-        $fm->label("دسته پدر", "w3-text-green")
-            ->select()
-            ->selectid("fid")
-            ->selectname("fid")
-            ->selectclasses("w3-select w3-border")
-            ->selectaddval("0", "بدون دسته پدر")
-            ->selectdb("cat", "name", "id", "", " where fid=0 and `wuser`='$wuser'")
-            ->end()
-            ->sndform("fid", 2, 1, "دسته پدر", 1);
-        $fm->label("نوع دسته بندی", "w3-text-green")
-            ->select()
-            ->selectid("type")
-            ->selectname("type")
-            ->selectclasses("w3-select w3-border")
-            ->selectaddval("0", "بلاگ")
-            ->selectaddval("1", "فروشگاه")
-            ->end()
-            ->sndform("type", 2, 1, "نوع دسته بندی", 1);
-
+        $fm->set_tbl_key("emails", "id", 1);
+        $fm->fast_string_input("ایمیل", "email", "email", 1, 1, 1);
         $fm->submit();
         $fm->addform();
         $fm->show();

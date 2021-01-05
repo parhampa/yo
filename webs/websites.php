@@ -81,6 +81,7 @@ include("nav.php");
         $fm->fast_string_input("شماره تماس 2", "tel2", "tel2", 0, 0, 1);
         $fm->fast_string_input(" تلفن همراه 1", "mob1", "mob1", 1, 1, 1);
         $fm->fast_string_input("تلفن همراه 2", "mob2", "mob2", 0, 0, 1);
+        $fm->fast_textarea("آدرس", "address", "address");
         $fm->fast_string_input("کد پستی", "post_code", "post_code");
         $fm->fast_string_input("ایمیل", "email", "email", 1);
         $fm->fast_string_input("اینستاگرام", "instagram", "instagram");

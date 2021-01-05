@@ -40,6 +40,14 @@
                     class="fa fa-bullseye fa-fw"></i> 
             اسلایدر</a>
         <hr>
+        <a href="brands.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
+                    class="fa fa-bullseye fa-fw"></i> 
+            برندها</a>
+        <hr>
+        <a href="emails.php?action=show" class="w3-bar-item w3-button w3-padding w3-right-align"><i
+                    class="fa fa-bullseye fa-fw"></i> 
+            خبرنامه</a>
+        <hr>
 
 
         <br><br>

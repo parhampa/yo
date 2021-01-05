@@ -18,6 +18,7 @@ include("check_admin_session.php");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="../lib/js/jquery.js"></script>
+<script src="../lib/js/palib.js"></script>
 <script src="js/fnuser.js"></script>
 <script src="js/modal.js"></script>
 <style>
@@ -63,17 +64,19 @@ include("nav.php");
             ->select()
             ->selectname("fcat_id")
             ->selectid("fcat_id")
-            ->selectclasses("w3-select w3-border")
+            ->select_onchange("loadsubcat()")
+            ->selectclasses("w3-select w3-border fcatcls")
             ->selectaddval("0", "بدون دسته")
-            ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `fid`=0 and `type`=0")
+            ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `fid`=0 and `type`=1")
             ->end()
-            ->sndform("fcat_id", 2, 1, "دسته پدر", 1, 1);
+            ->sndform("fcat_id", 2, 1, "دسته پدر");
         $fm->label("دسته بندی", "w3-text-green")
             ->select()
             ->selectname("cat_id")
             ->selectid("cat_id")
             ->selectclasses("w3-select w3-border")
-            ->end()
+            ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `type`=1")
+                ->end()
             ->sndform("cat_id", 2, 1, "دسته بندی", 1, 1);
         $fm->fast_string_input("عنوان کالا", "title", "title", 1, 1, 1);
         $fm->fast_textarea("خلاصه توضیحات", "short_txt", "short_txt", 1);
@@ -83,6 +86,9 @@ include("nav.php");
         $fm->fast_number_input("درصد تخفیف", "offer_percent", "offer_percent", 0);
         $fm->fast_number_input("مبلغ تخفیف", "offer_price", "offer_price", 0);
         $fm->fast_number_input("تعداد", "pcount", "pcount", 0);
+        $fm->fileinput("تصویر1", "pic1", "w3-input w3-border", "w3-text-green", 0);
+        $fm->fileinput("تصویر2", "pic2", "w3-input w3-border", "w3-text-green", 0);
+        $fm->fileinput("تصویر3", "pic3", "w3-input w3-border", "w3-text-green", 0);
         $fm->label("محل VIP", "w3-text-green")
             ->select()
             ->selectname("vip_plc")
@@ -103,6 +109,17 @@ include("nav.php");
     </div>
     <!-- End page content -->
 </div>
+<script>
+    function loadsubcat() {
+        postobj.post_url = "usercats.php";
+        postobj.send_type = "post";
+        postobj.after_success = function (data) {
+            document.getElementById('cat_id').innerHTML = data;
+        }
+        res_obj_postdata("fcatcls");
+    }
+
+</script>
 <?php
 include("footer.php");
 ?>

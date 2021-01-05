@@ -18,6 +18,7 @@ include("check_admin_session.php");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="../lib/js/jquery.js"></script>
+<script src="../lib/js/palib.js"></script>
 <script src="js/fnuser.js"></script>
 <script src="js/modal.js"></script>
 <style>
@@ -63,7 +64,8 @@ include("nav.php");
             ->select()
             ->selectname("fcat_id")
             ->selectid("fcat_id")
-            ->selectclasses("w3-select w3-border")
+            ->selectclasses("w3-select w3-border fcatcls")
+            ->select_onchange("loadsubcat()")
             ->selectaddval("0", "بدون دسته")
             ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `fid`=0 and `type`=0")
             ->end()
@@ -73,11 +75,15 @@ include("nav.php");
             ->selectname("cat_id")
             ->selectid("cat_id")
             ->selectclasses("w3-select w3-border")
+            ->selectdb("cat", "name", "id", "", "where `wuser`='$wuser' and `type`=0")
             ->end()
             ->sndform("cat_id", 2, 1, "دسته بندی", 1, 1);
         $fm->fast_string_input("عنوان مطلب", "title", "title", 1, 1, 1);
         $fm->fast_textarea("خلاصه مطلب", "short_txt", "short_txt", 1);
         $fm->fast_textarea("متن کامل", "txt", "txt", 1);
+        $fm->fileinput("تصویر 1", "pic1", "w3-input w3-border", "w3-text-green");
+        $fm->fileinput("تصویر 2", "pic2", "w3-input w3-border", "w3-text-green");
+        $fm->fileinput("تصویر 3", "pic3", "w3-input w3-border", "w3-text-green");
         $fm->fast_textarea("کلمات کلیدی", "kewords", "kewords", 1);
         $fm->set_str_val("pdate", date("Y-m-d"));
         $fm->set_int_val("visit", 0);
@@ -89,6 +95,18 @@ include("nav.php");
     </div>
     <!-- End page content -->
 </div>
+<script>
+    function loadsubcat() {
+        postobj.post_url = "usercats.php";
+        postobj.send_type = "post";
+        postobj.after_success = function (data) {
+            document.getElementById('cat_id').innerHTML = data;
+        }
+        res_obj_postdata("fcatcls");
+    }
+
+</script>
+
 <?php
 include("footer.php");
 ?>
